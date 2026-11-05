@@ -1,0 +1,77 @@
+---
+import { siteConfig } from "../config";
+const hasFresherSummary =
+  siteConfig.fresherSummary && siteConfig.fresherSummary.length > 0;
+---
+
+{
+  hasFresherSummary && (
+    <section id="highlights" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              What I Bring
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 gap-6">
+              {siteConfig.fresherSummary.map((block) => (
+                <div class="fresher-card bg-white rounded-lg shadow-sm border border-gray-100 p-5 sm:p-6 md:p-8 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">{block.icon}</span>
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+                      {block.title}
+                    </h3>
+                  </div>
+
+                  <ul class="space-y-3">
+                    {block.points.map((point) => (
+                      <li class="flex items-start">
+                        <span
+                          class="inline-block w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                          style={`background-color: ${siteConfig.accentColor}`}
+                        />
+                        <span class="text-sm sm:text-base text-gray-600">
+                          {point}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .fresher-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fresher-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--accent-color, #1d4ed8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .fresher-card:hover::before {
+    opacity: 1;
+  }
+</style>
