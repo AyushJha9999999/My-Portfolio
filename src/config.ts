@@ -64,7 +64,7 @@ export const siteConfig = {
     {
       school: "Dayananda Sagar College of Engineering",
       degree: "B.Tech Information Science Engineering",
-      dateRange: "2022 - Present",
+      dateRange: "2024 - 2028",
       achievements: [
         "Current CGPA: 8.85 (5th semester)",
         "10th Grade: 10 CGPA",
